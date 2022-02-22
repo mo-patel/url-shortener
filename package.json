@@ -1,0 +1,32 @@
+{
+  "name": "url-shortener",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.ts",
+  "scripts": {
+    "start": "NODE_PATH=./build node build/server.js",
+    "build": "tsc -p .",
+    "dev": "nodemon src/server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mo-patel/url-shortener.git"
+  },
+  "author": "MP",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mo-patel/url-shortener/issues"
+  },
+  "homepage": "https://github.com/mo-patel/url-shortener#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "jest": "^27.5.1",
+    "uuid": "8.3.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5"
+  }
+}
