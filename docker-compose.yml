@@ -17,3 +17,7 @@ services:
     command: npm run dev
   redis:
     image: "redis:alpine"
+    expose:
+      - '6739'
+    ports: 
+      - '6739:6739'
