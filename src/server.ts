@@ -13,7 +13,7 @@ app.get('/r/:id', async (req, res) => {
     if(!link){
         return res.status(404).send({"message": "Link cannot be found"});
     }
-    return res.redirect(link);
+    return res.status(302).redirect(link);
 });
 
 app.get('/shorten', async (req, res) => {

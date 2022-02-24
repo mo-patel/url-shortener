@@ -1,15 +1,15 @@
 version: '3.7'
 
 services:
-  ur-shortener-dev:
+  url-shortener:
     build:
       context: .
       dockerfile: Dockerfile
       target: base
     volumes:
-      - ./src:/home/node/app/src
-      - ./nodemon.json:/home/node/app/nodemon.json
-    container_name: ur-shortener-dev
+      - ./src:/url-shortener/app/src
+      - ./nodemon.json:/url-shortener/app/nodemon.json
+    container_name: url-shortener-dev
     expose:
       - '4000'
     ports:
