@@ -1,19 +1,16 @@
 # url-shortener
----
 
 ## Setup
----
 
 <strong>Please note, Docker must be installed to run this repo</strong>
 
-Once the git repo has been closed, run:
+Once the git repo has been cloned, run:
 ```
 docker-compose up --build
 ```
-Be patient as this command and take some time
+Be patient as this command may take some time
 
 ## Usage
----
 
 In order to generate a new shortened link, visit the following page in a browser
 
