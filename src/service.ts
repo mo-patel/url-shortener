@@ -1,6 +1,8 @@
+require('dotenv').config()
 const { v4: uuidv4 } = require('uuid');
 import { createClient } from 'redis';
-const client = createClient({ url: 'redis://redis:6379' });
+const client = createClient({ url: 'redis://redis:' + process.env.REDIS_PORT });
+import type { LinkMap } from './linkTypes';
 
 export const getLink = async (id: string) => {
     
@@ -13,24 +15,26 @@ export const getLink = async (id: string) => {
     return link;
 }
 
-export const saveLink = (link: any) => {
-    return saveToStorage(uuidv4(), link)
+export const saveLink = (link: string) => {
+    let linkItem: LinkMap = {
+        key: uuidv4(),
+        link
+    }
+    return saveToStorage(linkItem)
 }
 
-const saveToStorage = async (key: string, newLink: string): Promise<string> => {
+const saveToStorage = async (linkMap: LinkMap): Promise<string> => {
     try {
         client.on("error", (err: any) => {
-            console.log(err);
+            throw new Error(err);
         });
         await client.connect();
-        let keyExists = await client.get(key);
-        //fallback for the very rare case if duplicate id
-        let setItem = await client.set( (keyExists ? uuidv4() : key), newLink);
+        let setItem = await client.set( linkMap.key, linkMap.link );
         await client.disconnect();
-        if(setItem)
-            return key;
-        else
-            throw "An error occurred";
+        if(setItem){
+            return linkMap.key;
+        }else
+            throw new Error("An error occurred");
     } catch(err: any) {
         throw err.message
     }

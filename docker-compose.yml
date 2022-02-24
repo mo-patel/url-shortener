@@ -17,7 +17,9 @@ services:
     command: npm run dev
   redis:
     image: "redis:alpine"
-    expose:
-      - '6739'
+    hostname: redis
+    command: --port 6800
     ports: 
-      - '6739:6739'
+      - '6800:6800'
+    expose:
+      - '6800'
