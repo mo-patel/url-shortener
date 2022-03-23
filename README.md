@@ -4,7 +4,9 @@
 
 <strong>Please note, Docker must be installed to run this repo</strong>
 
-Once the git repo has been cloned, run:
+Once the git repo has been cloned, you must configure your environment variables. Copy the `.env.example` file to a `.env` file and fill in the settings correctly. Ensure the `.env` file is saved at the root of the project.
+
+Once that is complete, to start building the project, run:
 ```
 docker-compose up --build
 ```
